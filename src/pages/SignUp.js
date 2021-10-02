@@ -1,6 +1,6 @@
 import React from 'react'
 
-import UserForm from "../components/UserForm"
+import UserForm from "../components/UserForm/UserForm"
 
 const SignUp = () => {
 
@@ -10,7 +10,7 @@ const SignUp = () => {
       {
       label: "E-mail address",
       name: "email",
-      type: "email"
+      type: "text"
       },
       {
       label: "Full name",

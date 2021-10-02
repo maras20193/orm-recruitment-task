@@ -1,16 +1,17 @@
 import React from 'react'
 
-import Logo from './Logo'
+import "./Layout.scss"
+
+import Logo from '../assets/Logo/Logo'
 
 const Layout = ({children}) => {
   return (
-    <>
-      <div>jestem lajou</div>
+    <div className="layout">
       <Logo/>
-      <div>
+      <div className="layout__container">
         {children}
       </div>
-    </>
+    </div>
   )
 }
 

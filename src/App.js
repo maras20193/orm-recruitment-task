@@ -8,13 +8,13 @@ import {
 
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Layout from './components/Layout';
+import Layout from './components/Layout/Layout';
 
 function App() {
   return (
     <div className="App">
-      <Layout>
-        <Router>
+      <Router>
+        <Layout>
           <Switch>
             <Route exact path="/">
               <Redirect to='/signIn'/>
@@ -22,8 +22,8 @@ function App() {
             <Route path="/signIn" component={SignIn}/>
             <Route path="/signUp" component={SignUp}/>
           </Switch>
-        </Router>
-      </Layout>
+        </Layout>
+      </Router>
     </div>
   );
 }

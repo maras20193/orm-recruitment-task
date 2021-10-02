@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react'
 
-import Form from "./Form"
+import Form from "../Form/Form"
 
-const validEmail = "dad@wp.pl";
+// const validEmail = "dad@wp.pl";
 
 const UserForm = ({ type, formData }) => {
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const [errors, setErrors] = useState({
     email: '',
@@ -37,15 +39,20 @@ const UserForm = ({ type, formData }) => {
       fullName: '',
     }
 
+    const reg = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
     switch (type) {
       case "signIn":
-        if (validEmail !== emailRef.current.value){
+        if (!emailRef.current.value.match(reg) ){
           errors.email = "Invalid email address"
         }
         setErrors(errors)
         break;
 
       case "signUp":
+        if (!emailRef.current.value.match(reg)){
+          errors.email = "Invalid email address"
+        } 
         if (!emailRef.current.value){
           errors.email = "Email is required"
         } 
@@ -55,16 +62,13 @@ const UserForm = ({ type, formData }) => {
         if (!fullNameRef.current.value){
           errors.fullName = "Full name is required"
         } 
-        if (passwordRef.current.value.length <= 8 ){
+        if (passwordRef.current.value.length < 8 ){
           errors.password = "Password is too short"
         }
         if (!passwordRef.current.value){
           errors.password = "Password is required"
         }
-        if (passwordRef.current.value !== confirmPasswordRef.current.value){
-          errors.confirmPassword = "Passwords do not matches"
-        }
-        if (!passwordRef.current.value){
+        if (passwordRef.current.value !== confirmPasswordRef.current.value || !confirmPasswordRef.current.value){
           errors.confirmPassword = "Please confirm your password"
         }
 
@@ -75,10 +79,18 @@ const UserForm = ({ type, formData }) => {
     }
   }
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    validation(type)
+    setIsLoading(true)
+
+    setTimeout(() => {
+      validation(type);
+      setIsLoading(false)
+    }, 1500);
+    
 
   }
 
@@ -88,7 +100,8 @@ const UserForm = ({ type, formData }) => {
       formData={formData} 
       refs={refs}
       errors={errors}
-      handleSubmit={handleSubmit}/>
+      handleSubmit={handleSubmit}
+      isLoading={isLoading}/>
     </div>
   )
 }

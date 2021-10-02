@@ -1,0 +1,7 @@
+{
+    "stylelint.config": {
+        "rules": {
+            "selector-max-class": 2
+        }
+    }
+}
