@@ -1,0 +1,156 @@
+$primary-color: #FF3F40;
+$secondary-color: #002C4B;
+$third-color: #FFD94C;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding-right: 2.4rem;
+    padding-left: 2.4rem;
+    max-width: 480px;
+    color: $secondary-color;
+
+    @media (max-width: 840px) and (orientation: landscape) {
+        max-width: 90%;
+    }
+
+    @media (max-width: 560px) and (orientation: portrait) {
+        max-width: 90%;
+    }
+
+    @media (max-width: 480px) and (orientation: portrait) {
+        max-width: 90%;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    &__header {
+        align-self: flex-start;
+        padding-right: 2.4rem;
+        padding-bottom: 1rem;
+        // border-bottom: 5px solid $primary-color;
+        font-weight: 700;
+
+        &::after {
+            display: block;
+            content: "";
+            width: 0%;
+            height: 5px;
+            margin-top: 3px;
+            background-color: $primary-color;
+            animation: show 0.3s ease-in forwards 1;
+
+            @keyframes show {
+                0% {
+                    width: 0%;
+                };
+                100% {
+                    width: 115%;
+                }
+            }
+
+        }
+    }
+
+    &__box {
+        width: 100%;
+    }
+
+    &__button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 6px 15px 0 rgba(0,0,0,0.15);
+      background-color: $primary-color;
+      color: #FFF;
+      cursor: pointer;
+      transition: 0.3s;
+      letter-spacing: 1px;
+      
+    
+    
+      &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px 0 rgba(0,0,0,0.25);
+          background-color: darken($color: $primary-color, $amount: 8);
+      }
+    
+      &--disabled {
+          opacity: 0.7;
+          cursor: default;
+          
+    
+          &:hover {
+              background-color: $primary-color;
+              box-shadow: 0 6px 15px 0 rgba(0,0,0,0.15);
+              transform: translateY(0);
+              
+          }
+      }
+    }
+
+    &__messageBox {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        
+        &--link {
+            margin-top: 10px;
+            margin-left: 10px;
+            color: $primary-color;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+        }
+    }
+}
+
+.inputBox {
+    width: 100%;
+    height: 5.4rem;
+
+    &__label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    &__input {
+        width: 100%;
+        height: 2.4rem;
+        padding: 0.6rem;
+        border: 1px solid $secondary-color;
+        border-radius: 5px;
+        font-size: 1rem;
+
+        &:hover {
+            border-width: 2px;
+        }
+
+        &:focus {
+            outline: none;
+            border-width: 2px;
+            border-color: $primary-color;
+        }
+
+    }
+
+    &__error {
+        color: red;
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-align: right;
+        margin-top: 0.2rem;
+        margin-right: 0.8rem;
+    }
+}
